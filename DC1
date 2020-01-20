@@ -1,0 +1,111 @@
+
+        cout << endl;
+    }
+string str = s;
+size_t last_index = str.find_last_not_of("0123456789");
+string result = str.substr(last_index + 1);
+s1.append(result);
+cout<<"the new message is appended with old checksums\n"<<s1;
+reciver(s1);
+}
+
+void reciver(string s)
+{
+string r;
+string str = s;
+size_t last_index = str.find_last_not_of("0123456789");
+string result = str.substr(last_index + 1);
+cout<<endl;
+cout<<"the appended check sums are:\t"<<result<<"\n";
+
+cout<<"the end digits is been removed\n";
+s.erase(s.length()-5);
+cout<<"RECIVER SIDE"<<endl;
+string binary;
+ int n = s.length ();
+  int ascii_message[1000];
+
+  for (int i = 0; i <= n; i++)
+    {
+      // convert each char to
+      // ASCII value
+      int val = int (s[i]);
+        ascii_message[i]=val;
+      // Convert ASCII value to binary
+      string bin = "";
+      while (val > 0)
+        {
+          (val % 2) ? bin.push_back ('1') : bin.push_back ('0');
+          val /= 2;
+        }
+      reverse (bin.begin (), bin.end ());
+
+      cout << bin << " "<<endl;
+    binary = binary + bin;
+
+    }
+cout<<"the ascii value of the message is :";
+        for(int i=0;i<n;i++)
+{
+cout<<ascii_message[i]<<"  ";
+}
+cout<<endl;
+cout<<"the binary code of the message is :\t ";
+cout<<binary;
+cout<<"\n";
+
+
+//void checksum(string s)
+    int sum1 = 0;
+    int sum2 = 0;
+    int check1 = 0;
+int check2 = 0;
+    int i = 0;
+
+    for(i=0;i<s.length();i++)
+    {
+        sum1 = (sum1 + int(s[i])) % 255;
+        sum2 = (sum2 + sum1) % 255;
+    }
+
+    cout<<"sum 1 = "<<sum1<<" "<<"sum 2 = "<<sum2<<endl;
+
+
+    check1 = 255 - ((sum1 + sum2)) % 255;
+    r.append(to_string(check1));
+
+    check2 = 255 - ( sum1 + check1 ) % 255;
+    r.append(to_string(check2));
+
+    cout<<"check 1 = "<<check1<<" "<<"check 2 = "<<check2<<endl;
+
+    cout<<"Final message recieved is :\n"<<s;
+
+if(r==result)
+{
+cout<<"the message is not disorted";
+}
+else
+{
+cout<<"the message is distorted";
+}
+
+
+
+
+
+     
+}
+
+
+
+// driver code
+int main ()
+{
+
+
+ // string s;
+ // cout << "enter a string: \t";
+//getline(cin,s);
+  strToBinary();
+  return 0;}
